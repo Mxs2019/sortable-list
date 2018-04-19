@@ -1,0 +1,141 @@
+<html>
+
+<head>
+
+  <script src="Sortable.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <style>
+    .container {
+      margin-top: 30px;
+    }
+
+    .module-list {
+      width: 350px;
+
+      border-top: 1px solid lightgrey;
+      border-left: 1px solid lightgrey;
+      border-right: 1px solid lightgrey;
+      font-size: 16px;
+    }
+
+    .module {
+      /* padding: 15px 20px; */
+      cursor: pointer;
+      border-bottom: 1px solid lightgrey;
+      background-color: white;
+    }
+
+    .module:hover {
+      /* padding: 15px 20px; */
+      background-color: EEE;
+    }
+
+
+    .sortable-ghost {
+      background-color: #DDD;
+      color: grey;
+    }
+
+    .fa-bars {
+      margin-right: 10px;
+      color: #AAA;
+      cursor: all-scroll;
+    }
+
+    .fa-pencil {
+      float: right;
+    }
+
+    .left-side {
+      padding: 15px 0px 15px 20px;
+    }
+
+    .clickable {
+      display: inline-block;
+      padding: 15px 20px 15px 0px;
+      width: 100%;
+      flex-grow: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="module-list" id="items">
+          <div class="module ">
+            <div class="module-inner d-flex align-items-center">
+              <div class="left-side"><i class="fa fa-bars"></i></div>
+              <div class="clickable d-flex justify-content-between align-items-center">
+                <div>Call to Action</div>
+                <div><i class="fa fa-pencil"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="module d-flex align-items-center">
+            <div class="left-side"><i class="fa fa-bars"></i></div>
+            <div class="clickable d-flex justify-content-between align-items-center">
+              <div>Text Block</div>
+              <div><i class="fa fa-pencil"></i></div>
+            </div>
+          </div>
+          <div class="module d-flex align-items-center">
+            <div class="left-side"><i class="fa fa-bars"></i></div>
+            <div class="clickable d-flex justify-content-between align-items-center">
+              <div>Announcement</div>
+              <div><i class="fa fa-pencil"></i></div>
+            </div>
+          </div>
+          <div class="module d-flex align-items-center">
+            <div class="left-side"><i class="fa fa-bars"></i></div>
+            <div class="clickable d-flex justify-content-between align-items-center">
+              <div>Event Details</div>
+              <div><i class="fa fa-pencil"></i></div>
+            </div>
+          </div>
+          <div class="module d-flex align-items-center">
+            <div class="left-side"><i class="fa fa-bars"></i></div>
+            <div class="clickable d-flex justify-content-between align-items-center">
+              <div>Event Cover</div>
+              <div><i class="fa fa-pencil"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <h3>Rules</h3>
+        <ul>
+          <li>Whole block is draggable. A 3px fallback tolerance is used to distinguish between clicks and drags</li>
+          <li>If you click the hamburger, it doens't do anything.</li>
+          <li>The entire right side is a click target (from just past the hamburger).</li>
+          <li>The cell where it will be dropped (ghostClass in sortable) is greyed out</li>
+          <li>Slight animation when rows move around (100ms)</li>
+          <li>White background on module</li>
+          <li>Issue: hover doesn't disappear when dragging.</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    var el = document.getElementById('items');
+    var sortable = Sortable.create(el, {
+      animation: 100,
+      ghostClass: "sortable-ghost",
+      fallbackTolerance: 3,
+    });
+
+    $('.clickable').click(function() {
+      alert($(this).text().trim() + " was clicked");
+    })
+  </script>
+</body>
+
+</html>
