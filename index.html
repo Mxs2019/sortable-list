@@ -12,12 +12,13 @@
       margin-top: 30px;
     }
 
+    .module-top {
+      padding: 20px;
+    }
+
     .module-list {
       width: 100%;
 
-      border-top: 1px solid lightgrey;
-      border-left: 1px solid lightgrey;
-      border-right: 1px solid lightgrey;
       font-size: 16px;
     }
 
@@ -28,9 +29,15 @@
       background-color: white;
     }
 
+    .module:first-of-type {
+      border-top: 1px solid lightgrey;
+
+    }
+
+
     .module:hover {
       /* padding: 15px 20px; */
-      background-color: EEE;
+      background-color: #EEE;
     }
 
 
@@ -59,52 +66,138 @@
       width: 100%;
       flex-grow: 1;
     }
+
+    .left-column {
+      width: 400px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+      border-right: 1px solid lightgrey;
+
+    }
+
+    .param-col {
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      left: 105%;
+      transition: 0.4s;
+      box-shadow: -1px 0px 10px 0px #00000026;
+      height: 100%;
+
+    }
+
+    .param-col.slide-in {
+      left: 0px;
+    }
+
+    .parameter {
+      padding: 10px 20px;
+      border-bottom: 1px solid lightgrey;
+    }
+
+    .parameter:first-of-type {
+      border-top: 1px solid lightgrey;
+    }
+
+    .parameter:hover {
+      background-color: #EEE;
+      cursor: pointer;
+    }
+
+
+    .param-top {
+      padding: 20px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="module-list" id="items">
-          <div class="module ">
-            <div class="module-inner d-flex align-items-center">
-              <div class="left-side"><i class="fa fa-bars"></i></div>
-              <div class="clickable d-flex justify-content-between align-items-center">
-                <div>Call to Action</div>
-                <div><i class="fa fa-chevron-right"></i></div>
-              </div>
-            </div>
-          </div>
-          <div class="module d-flex align-items-center">
-            <div class="left-side"><i class="fa fa-bars"></i></div>
-            <div class="clickable d-flex justify-content-between align-items-center">
-              <div>Text Block</div>
-              <div><i class="fa fa-chevron-right"></i></div>
-            </div>
-          </div>
-          <div class="module d-flex align-items-center">
-            <div class="left-side"><i class="fa fa-bars"></i></div>
-            <div class="clickable d-flex justify-content-between align-items-center">
-              <div>Announcement</div>
-              <div><i class="fa fa-chevron-right"></i></div>
-            </div>
-          </div>
-          <div class="module d-flex align-items-center">
-            <div class="left-side"><i class="fa fa-bars"></i></div>
-            <div class="clickable d-flex justify-content-between align-items-center">
-              <div>Event Details</div>
-              <div><i class="fa fa-chevron-right"></i></div>
-            </div>
-          </div>
-          <div class="module d-flex align-items-center">
-            <div class="left-side"><i class="fa fa-bars"></i></div>
-            <div class="clickable d-flex justify-content-between align-items-center">
-              <div>Event Cover</div>
-              <div><i class="fa fa-chevron-right"></i></div>
-            </div>
+  <div class="left-column">
+    <div class="param-col">
+      <div class="param-top">
+        <div class="mb-2">
+          <a href="#" class="slide-out-params">
+          <i class="fa fa-chevron-left "></i> Back to Design</a>
+        </div>
+        <h5>Parameters</h5>
+      </div>
+      <div class="params">
+        <div class="parameter d-flex justify-content-between">
+          <div>Param 1</div>
+          <div><i class="fa fa-pencil"></i></div>
+        </div>
+        <div class="parameter d-flex justify-content-between">
+          <div>Param 2</div>
+          <div><i class="fa fa-pencil"></i></div>
+        </div>
+        <div class="parameter d-flex justify-content-between">
+          <div>Param 3</div>
+          <div><i class="fa fa-pencil"></i></div>
+        </div>
+        <div class="parameter d-flex justify-content-between">
+          <div>Param 4</div>
+          <div><i class="fa fa-pencil"></i></div>
+        </div>
+        <div class="parameter d-flex justify-content-between">
+          <div>Param 5</div>
+          <div><i class="fa fa-pencil"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="module-top">
+      <h5>Modules</h5>
+    </div>
+
+    <div class="module-list" id="items">
+
+      <div class="module ">
+        <div class="module-inner d-flex align-items-center">
+          <div class="left-side"><i class="fa fa-bars"></i></div>
+          <div class="clickable d-flex justify-content-between align-items-center">
+            <div>Call to Action</div>
+            <div><i class="fa fa-chevron-right"></i></div>
           </div>
         </div>
+      </div>
+      <div class="module d-flex align-items-center">
+        <div class="left-side"><i class="fa fa-bars"></i></div>
+        <div class="clickable d-flex justify-content-between align-items-center">
+          <div>Text Block</div>
+          <div><i class="fa fa-chevron-right"></i></div>
+        </div>
+      </div>
+      <div class="module d-flex align-items-center">
+        <div class="left-side"><i class="fa fa-bars"></i></div>
+        <div class="clickable d-flex justify-content-between align-items-center">
+          <div>Announcement</div>
+          <div><i class="fa fa-chevron-right"></i></div>
+        </div>
+      </div>
+      <div class="module d-flex align-items-center">
+        <div class="left-side"><i class="fa fa-bars"></i></div>
+        <div class="clickable d-flex justify-content-between align-items-center">
+          <div>Event Details</div>
+          <div><i class="fa fa-chevron-right"></i></div>
+        </div>
+      </div>
+      <div class="module d-flex align-items-center">
+        <div class="left-side"><i class="fa fa-bars"></i></div>
+        <div class="clickable d-flex justify-content-between align-items-center">
+          <div>Event Cover</div>
+          <div><i class="fa fa-chevron-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-4">
+
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-6">
@@ -134,7 +227,11 @@
     });
 
     $('.clickable').click(function() {
-      alert($(this).text().trim() + " was clicked");
+      $('.param-col').addClass('slide-in')
+    })
+
+    $('.slide-out-params').click(function() {
+      $('.param-col').removeClass('slide-in')
     })
   </script>
 </body>
