@@ -107,6 +107,14 @@
       cursor: pointer;
     }
 
+    .parameter .fa-pencil {
+      display: none;
+    }
+
+    .parameter:hover .fa-pencil {
+      display: block;
+    }
+
 
     .param-top {
       padding: 20px;
@@ -203,13 +211,15 @@
       <div class="col-md-6">
         <h3>Rules</h3>
         <ul>
+          <li>This is just an animation demo - not a pixel perfect mock. Use the mocks as the source of truth.</li>
           <li>Whole block is draggable. A 3px fallback tolerance is used to distinguish between clicks and drags</li>
           <li>If you click the hamburger, it doens't do anything.</li>
           <li>The entire right side is a click target (from just past the hamburger).</li>
           <li>The cell where it will be dropped (ghostClass in sortable) is greyed out</li>
           <li>Slight animation when rows move around (100ms)</li>
           <li>White background on module</li>
-          <li>Issue: hover doesn't disappear when dragging.</li>
+          <li>ISSUE: hover doesn't disappear when dragging.</li>
+          <li>ISSUE: If you start dragging an element and drag it to the right it scrolls to the right and the right slides in.</li>
         </ul>
         <a href="https://github.com/Mxs2019/sortable-list" class="btn btn-lg btn-block btn-primary">View on GitHub</a>
 
