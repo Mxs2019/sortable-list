@@ -13,7 +13,7 @@
     }
 
     .module-top {
-      padding: 20px 20px 10px 27px;
+      padding: 20px 20px 10px 33px;
     }
 
     .module-list {
@@ -61,8 +61,8 @@
     }
 
     .left-side {
-      padding: 15px 0px 15px 6px;
-      width: 27px;
+      padding: 15px 0px 15px 9px;
+      width: 33px;
     }
 
     .clickable {
@@ -101,6 +101,8 @@
     .parameter {
       padding: 10px 20px;
       border-bottom: 1px solid lightgrey;
+      max-height: 46px;
+      transition: 0.4s;
     }
 
     .parameter:first-of-type {
@@ -120,6 +122,34 @@
       display: block;
     }
 
+    .parameter.expanded:hover .fa-pencil {
+      display: none;
+    }
+
+    .parameter .fa-times {
+      display: none;
+    }
+
+    .parameter.expanded .fa-times {
+      display: inline;
+    }
+
+    .parameter.expanded {
+      background-color: #EEE;
+      height: auto;
+      max-height: 200px;
+    }
+
+
+    .parameter .detail {
+      opacity: 0;
+      transition: 0.3s;
+      color: grey;
+    }
+
+    .parameter.expanded .detail {
+      opacity: 1;
+    }
 
     .param-top {
       padding: 20px;
@@ -138,25 +168,70 @@
         <h5>Parameters</h5>
       </div>
       <div class="params">
-        <div class="parameter d-flex justify-content-between">
-          <div>Param 1</div>
-          <div><i class="fa fa-pencil"></i></div>
+        <div class="parameter">
+          <div class="d-flex justify-content-between">
+            <div>Param 1</div>
+            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
+          </div>
+          <div class="detail">
+            <ul>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+            </ul>
+          </div>
         </div>
-        <div class="parameter d-flex justify-content-between">
-          <div>Param 2</div>
-          <div><i class="fa fa-pencil"></i></div>
+        <div class="parameter">
+          <div class="d-flex justify-content-between">
+            <div>Param 2</div>
+            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
+          </div>
+          <div class="detail">
+            <ul>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+            </ul>
+          </div>
         </div>
-        <div class="parameter d-flex justify-content-between">
-          <div>Param 3</div>
-          <div><i class="fa fa-pencil"></i></div>
+        <div class="parameter">
+          <div class="d-flex justify-content-between">
+            <div>Param 3</div>
+            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
+          </div>
+          <div class="detail">
+            <ul>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+            </ul>
+          </div>
         </div>
-        <div class="parameter d-flex justify-content-between">
-          <div>Param 4</div>
-          <div><i class="fa fa-pencil"></i></div>
+        <div class="parameter">
+          <div class="d-flex justify-content-between">
+            <div>Param 4</div>
+            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
+          </div>
+          <div class="detail">
+            <ul>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+            </ul>
+          </div>
         </div>
-        <div class="parameter d-flex justify-content-between">
-          <div>Param 5</div>
-          <div><i class="fa fa-pencil"></i></div>
+        <div class="parameter">
+          <div class="d-flex justify-content-between">
+            <div>Param 5</div>
+            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
+          </div>
+          <div class="detail">
+            <ul>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+              <li>Param Detail</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -247,6 +322,15 @@
 
     $('.slide-out-params').click(function() {
       $('.param-col').removeClass('slide-in')
+    })
+
+    $('.parameter').click(function() {
+      if ($(this).hasClass('expanded')) {
+        $(this).removeClass('expanded')
+      } else {
+        $('.parameter').removeClass('expanded')
+        $(this).addClass('expanded')
+      }
     })
   </script>
 </body>
