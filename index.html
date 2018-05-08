@@ -3,9 +3,17 @@
 <head>
 
   <script src="Sortable.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <script src="app.js"></script>
 
   <style>
     .container {
@@ -40,6 +48,10 @@
       background-color: #EEE;
     }
 
+    .module-text {
+      padding: 8px 0px;
+    }
+
 
     .sortable-ghost {
       background-color: #DDD;
@@ -67,7 +79,7 @@
 
     .clickable {
       display: inline-block;
-      padding: 15px 20px 15px 0px;
+      padding: 7px 20px 7px 0px;
       width: 100%;
       flex-grow: 1;
     }
@@ -166,75 +178,43 @@
       border-left: 1px solid lightgrey;
       border-bottom: 1px solid lightgrey;
     }
+
+    .icon {
+      padding: 5px;
+      width: 35px;
+      height: 35px;
+      font-size: .9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      opacity: 0.0;
+    }
+
+    .module:hover .icon {
+      opacity: 1.0;
+    }
+
+    .icon:hover {
+      background-color: lightgrey;
+      border-radius: 100px;
+    }
   </style>
 </head>
 
-<body>
+<body ng-app="app" ng-controller="Controller as ctr" ng-cloak>
   <div class="left-column">
-    <div class="param-col">
+    <div class="param-col" ng-class="{'slide-in': showingParams}">
       <div class="param-top">
         <div class="mb-2">
-          <a href="#" class="slide-out-params">
+          <a href="" ng-click="updateShowingParams(false)" class="slide-out-params">
           <i class="fa fa-chevron-left "></i> Back to Design</a>
         </div>
         <h5>Parameters</h5>
       </div>
       <div class="params">
-        <div class="parameter">
+        <div class="parameter" ng-repeat="param in params track by $index" ng-click="showParam($index)" ng-class="{'expanded': paramShowing == $index}">
           <div class="d-flex justify-content-between">
-            <div>Param 1</div>
-            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
-          </div>
-          <div class="detail">
-            <ul>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-            </ul>
-          </div>
-        </div>
-        <div class="parameter">
-          <div class="d-flex justify-content-between">
-            <div>Param 2</div>
-            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
-          </div>
-          <div class="detail">
-            <ul>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-            </ul>
-          </div>
-        </div>
-        <div class="parameter">
-          <div class="d-flex justify-content-between">
-            <div>Param 3</div>
-            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
-          </div>
-          <div class="detail">
-            <ul>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-            </ul>
-          </div>
-        </div>
-        <div class="parameter">
-          <div class="d-flex justify-content-between">
-            <div>Param 4</div>
-            <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
-          </div>
-          <div class="detail">
-            <ul>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-              <li>Param Detail</li>
-            </ul>
-          </div>
-        </div>
-        <div class="parameter">
-          <div class="d-flex justify-content-between">
-            <div>Param 5</div>
+            <div>Param {{param}}</div>
             <div><i class="fa fa-pencil"></i><i class="fa fa-times"></i></div>
           </div>
           <div class="detail">
@@ -253,41 +233,18 @@
 
     <div class="module-list" id="items">
 
-      <div class="module ">
+      <div class="module" ng-repeat="module in modules">
         <div class="module-inner d-flex align-items-center">
           <div class="left-side"><i class="fa fa-bars"></i></div>
-          <div class="clickable d-flex justify-content-between align-items-center">
-            <div>Call to Action</div>
-            <div><i class="fa fa-chevron-right"></i></div>
+          <div class="clickable d-flex justify-content-between align-items-center" ng-click="updateShowingParams(true)">
+            <div class="module-text">{{ module }}</div>
+            <div class="d-flex">
+              <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Delete Module"><i class="fa fa-trash"></i></div>
+              <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Add Module Below"><i class="fa fa-arrow-down"></i></div>
+              <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Add Module Above"><i class="fa fa-arrow-up"></i></div>
+              <!-- <div class="icon ml-2"><i class="fa fa-chevron-right"></i></div> -->
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="module d-flex align-items-center">
-        <div class="left-side"><i class="fa fa-bars"></i></div>
-        <div class="clickable d-flex justify-content-between align-items-center">
-          <div>Text Block</div>
-          <div><i class="fa fa-chevron-right"></i></div>
-        </div>
-      </div>
-      <div class="module d-flex align-items-center">
-        <div class="left-side"><i class="fa fa-bars"></i></div>
-        <div class="clickable d-flex justify-content-between align-items-center">
-          <div>Announcement</div>
-          <div><i class="fa fa-chevron-right"></i></div>
-        </div>
-      </div>
-      <div class="module d-flex align-items-center">
-        <div class="left-side"><i class="fa fa-bars"></i></div>
-        <div class="clickable d-flex justify-content-between align-items-center">
-          <div>Event Details</div>
-          <div><i class="fa fa-chevron-right"></i></div>
-        </div>
-      </div>
-      <div class="module d-flex align-items-center">
-        <div class="left-side"><i class="fa fa-bars"></i></div>
-        <div class="clickable d-flex justify-content-between align-items-center">
-          <div>Event Cover</div>
-          <div><i class="fa fa-chevron-right"></i></div>
         </div>
       </div>
     </div>
@@ -310,6 +267,7 @@
 
 
   <script>
+    // var load = function() {
     var el = document.getElementById('items');
     var sortable = Sortable.create(el, {
       animation: 100,
@@ -317,21 +275,8 @@
       fallbackTolerance: 3,
     });
 
-    $('.clickable').click(function() {
-      $('.param-col').addClass('slide-in')
-    })
-
-    $('.slide-out-params').click(function() {
-      $('.param-col').removeClass('slide-in')
-    })
-
-    $('.parameter').click(function() {
-      if ($(this).hasClass('expanded')) {
-        $(this).removeClass('expanded')
-      } else {
-        $('.parameter').removeClass('expanded')
-        $(this).addClass('expanded')
-      }
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip()
     })
   </script>
 </body>
