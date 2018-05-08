@@ -7,10 +7,10 @@ app.controller('Controller', [
   '$anchorScroll',
   function($scope, $window, $location, $anchorScroll) {
     $scope.modules = ["Event Cover", "Text Block", "Announcement Bar", "Call to Action", "Event Details"]
+    $scope.selectedModule = null;
     $scope.params = [1, 2, 3, 4, 5]
-    $scope.showingParams = false;
-    $scope.updateShowingParams = function(show) {
-      $scope.showingParams = show
+    $scope.updateSelectedModule = function(module) {
+      $scope.selectedModule = module
     }
 
     $scope.paramShowing = -1;
@@ -21,6 +21,19 @@ app.controller('Controller', [
       } else {
         $scope.paramShowing = index;
       }
+    }
+
+    $scope.deleteModule = function(index) {
+      $scope.modules.splice(index, 1)
+    }
+
+    $scope.addModule = function(index, above) {
+
+      if (!above) {
+        index += 1;
+      }
+      $scope.modules.splice(index, 0, "Module " + $scope.modules.length)
+      $scope.updateSelectedModule($scope.modules[index])
     }
 
     // load()
