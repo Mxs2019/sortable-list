@@ -248,10 +248,10 @@
           <div class="clickable d-flex justify-content-between align-items-center">
             <div class="module-text" ng-click="updateSelectedModule(module)">{{ module }}</div>
             <div class="d-flex icons">
-              <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Edit Module" ng-click="updateSelectedModule(module)"><i class="fa fa-pencil-alt"></i></div>
-              <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Delete Module" ng-click="deleteModule($index)"><i class="fa fa-trash"></i></div>
               <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Add Module Below" ng-click="addModule($index, false)"><i class="fa fa-arrow-down"></i></div>
               <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Add Module Above" ng-click="addModule($index, true)"><i class="fa fa-arrow-up"></i></div>
+              <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Delete Module" ng-click="deleteModule($index)"><i class="fa fa-trash"></i></div>
+              <div class="icon" data-toggle="tooltip" data-placement="bottom" title="Edit Module" ng-click="updateSelectedModule(module)"><i class="fa fa-pencil-alt"></i></div>
               <!-- <div><i class="fa fa-chevron-right ml-2"></i></div> -->
             </div>
           </div>
